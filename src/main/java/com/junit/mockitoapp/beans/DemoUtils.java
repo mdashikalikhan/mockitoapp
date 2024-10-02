@@ -1,6 +1,15 @@
 package com.junit.mockitoapp.beans;
 
+import lombok.Getter;
+
+@Getter
 public class DemoUtils {
+
+    private String str="Sample";
+
+    private String strDuplicate = str;
+
+    private int[] integers = {5,4,3,2,1};
 
     public int add(int num1, int num2) {
         return num1 + num2;
@@ -18,5 +27,9 @@ public class DemoUtils {
             return null;
         }
         return obj;
+    }
+
+    public  boolean isGreater(int num1, int num2) {
+        return num1 > num2;
     }
 }
