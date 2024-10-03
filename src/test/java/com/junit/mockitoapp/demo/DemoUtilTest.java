@@ -5,7 +5,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.junit.mockitoapp.beans.DemoUtils;
 import org.junit.jupiter.api.*;
 
+import java.time.Duration;
+import java.util.List;
+
 @DisplayNameGeneration(DisplayNameGenerator.IndicativeSentences.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class DemoUtilTest {
 
 
@@ -35,6 +39,7 @@ public class DemoUtilTest {
 
     @Test
     //@DisplayName("Test_Equals_Or_Not")
+    @Order(50)
     void testDemoUtilEqualsOrNotEquals() {
         int result = demoUtils.add(10, 20);
         int expected = 30;
@@ -54,6 +59,7 @@ public class DemoUtilTest {
 
     @Test
     @DisplayName("Test_Null")
+    @Order(-1)
     void testNull(){
         assertNull( null);
 
@@ -61,9 +67,15 @@ public class DemoUtilTest {
 
     @Test
     @DisplayName("Test_Throws")
+    @Order(60)
     void testAssertThrows(){
         assertThrows(ArithmeticException.class, ()->demoUtils.divide(10, 0));
-
+        assertDoesNotThrow(()->demoUtils.divide(10,9),"Should not throw exception");
+        assertDoesNotThrow(()->demoUtils.add(10, 10),"Should not throw exception");
+        assertThrows(Exception.class, ()->{
+            String s = null;
+            int l = s.length();
+        });
     }
 
     @Test
@@ -85,4 +97,21 @@ public class DemoUtilTest {
         int[] testArr={1,2,3,4,5};
         assertArrayEquals(testArr, demoUtils.getIntegers(), "Array not equal");
     }
+
+    @DisplayName("Test Collection Equal")
+    @Test
+    void testIterableEqual(){
+        List<String> stringList = List.of("ABC",   "DEF", "GHI");
+
+        assertIterableEquals(stringList, demoUtils.getStrList(), "List is not equal");
+    }
+
+    @DisplayName("Test Timeout")
+    @Test
+    void testTimeout(){
+        assertTimeoutPreemptively(Duration.ofSeconds(5), ()->{
+            demoUtils.timeout();
+        }, "Time Exceeds");
+    }
+
 }
