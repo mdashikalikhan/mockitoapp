@@ -38,6 +38,6 @@ public class DemoUtils {
     }
 
     public void timeout() throws InterruptedException {
-        Thread.sleep(10000);
+        Thread.sleep(3000);
     }
 }
