@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
@@ -27,5 +29,10 @@ public class CollegeStudent implements Student{
     @Override
     public String getFullName() {
         return getFirstname() + " " + getLastname();
+    }
+
+    @Override
+    public List<Double> getMathGrades() {
+        return List.of();
     }
 }
