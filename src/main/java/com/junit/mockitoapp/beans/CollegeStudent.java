@@ -21,6 +21,8 @@ public class CollegeStudent implements Student{
 
     private StudentGrades studentGrades;
 
+    private String id;
+
     @Override
     public String studentInformation() {
         return getFullName() + " " + getEmailAddress();
@@ -34,5 +36,10 @@ public class CollegeStudent implements Student{
     @Override
     public List<Double> getMathGrades() {
         return List.of();
+    }
+
+    @Override
+    public String getIdAndName() {
+        return getId() + " " + getFullName();
     }
 }

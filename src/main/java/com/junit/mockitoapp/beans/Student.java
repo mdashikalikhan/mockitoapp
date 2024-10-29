@@ -9,4 +9,6 @@ public interface Student {
     String getFullName();
 
     List<Double> getMathGrades();
+
+    String getIdAndName();
 }
