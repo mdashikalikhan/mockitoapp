@@ -10,5 +10,5 @@ public interface Student {
 
     List<Double> getMathGrades();
 
-    String getIdAndName();
+
 }

@@ -38,8 +38,7 @@ public class CollegeStudent implements Student{
         return List.of();
     }
 
-    @Override
-    public String getIdAndName() {
+    private String getIdAndName() {
         return getId() + " " + getFullName();
     }
 }
